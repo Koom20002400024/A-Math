@@ -23,12 +23,12 @@ public class Chip {
         iv.setTag(result);
     }
 
-    public static Object getIVTag(ImageView iv, String key) {
+    public static java.lang.Object getIVTag(ImageView iv, String key) {
         return ((HashMap<String, ?>) iv.getTag()).get(key);
     }
 
-    public static String getValueIV(Activity activity,  HashMap<String, Integer> idMap, int x, int y) {
-        if (x < 0 || x > getNum() || y < 0 || y > getNum()) {
+    public static String getValueIV(Activity activity, HashMap<String, Integer> idMap, int x, int y) {
+        if (x < 0 || x >= getNum() || y < 0 || y >= getNum()) {
             return null;
         }
 

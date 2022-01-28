@@ -39,7 +39,7 @@ public class initObj {
     static int paddingPx, paddingPiecePx, paddingStrokePx, paddingSelectPx, paddingSelectPiecePx, piece, piece_select;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
-    public static void initAllObj(Activity activity, HashMap<String, Integer> idMap, HashMap<Integer, List<String>> table_map) {
+    public static void initAllObj(Activity activity, HashMap<String, Integer> idMap, HashMap<Integer, List<String>> table_map, HashMap<Integer, String> select_chip) {
 
         ConstraintLayout table = activity.findViewById(R.id.table);
         ConstraintLayout select = activity.findViewById(R.id.select);
@@ -79,7 +79,7 @@ public class initObj {
         int y_selectAfter = y_select + height_select_bg;
         createObj(selectAfter, width_selectAfter, height_selectAfter, Color.BLACK, x_selectAfter, y_selectAfter);
 
-        createSelect(activity, idMap, select, piece_select, 10 * density, paddingSelectPx, paddingSelectPiecePx);
+        createSelect(activity, idMap, select, piece_select, 10 * density, paddingSelectPx, paddingSelectPiecePx, select_chip);
 
         int x_btn = (metrics.widthPixels - 250) / 2;
         int y_btn = y_selectAfter + 70;
@@ -124,16 +124,9 @@ public class initObj {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    static void createSelect(Activity activity, HashMap<String, Integer> idMap, ConstraintLayout select, int size, float y, int paddingSelectPx, int paddingSelectPiecePx) {
-        HashMap<Integer, String> selectValue = new HashMap<>();
+    static void createSelect(Activity activity, HashMap<String, Integer> idMap, ConstraintLayout select, int size, float y, int paddingSelectPx, int paddingSelectPiecePx, HashMap<Integer, String> select_chip) {
 
         for (int i = 0; i < getSelectNum(); i++) {
-
-            if (i < getSelectNum() - 1) {
-                selectValue.put(i, random_chip());
-            } else {
-                selectValue.put(i, "=");
-            }
 
             ImageView iv = new ImageView(activity);
 
@@ -144,11 +137,11 @@ public class initObj {
             iv.setId(idMap.get(idName));
 
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("value", selectValue.get(i));
+            hashMap.put("value", select_chip.get(i));
             hashMap.put("used", false);
             iv.setTag(hashMap);
 
-            setChip(activity, iv, selectValue.get(i));
+            setChip(activity, iv, select_chip.get(i));
 
             float x = (i * size) + paddingSelectPx + (i * paddingSelectPiecePx);
 

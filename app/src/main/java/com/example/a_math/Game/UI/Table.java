@@ -23,21 +23,21 @@ public class Table {
         HashMap<Integer, HashMap<String, List<Integer>>> initTable = new HashMap<>();
 
         // r, y, o, b, s
-        initTable.put(0, setTableStatus(Arrays.asList(0, 7, 14), Arrays.asList(3, 11), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
+        initTable.put(0, setTableStatus(Arrays.asList(0, 7, 14), Collections.emptyList(), Arrays.asList(3, 11), Collections.emptyList(), Collections.emptyList()));
         initTable.put(1, setTableStatus(Collections.emptyList(), Arrays.asList(1, 13), Collections.emptyList(), Arrays.asList(5, 9), Collections.emptyList()));
         initTable.put(2, setTableStatus(Collections.emptyList(), Arrays.asList(2, 12), Arrays.asList(6, 8), Collections.emptyList(), Collections.emptyList()));
         initTable.put(3, setTableStatus(Collections.emptyList(), Arrays.asList(3, 11), Arrays.asList(0, 7, 14), Collections.emptyList(), Collections.emptyList()));
         initTable.put(4, setTableStatus(Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Arrays.asList(4, 10), Collections.emptyList()));
         initTable.put(5, setTableStatus(Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Arrays.asList(1, 5, 9, 13), Collections.emptyList()));
-        initTable.put(6, setTableStatus(Collections.emptyList(), Arrays.asList(2, 6, 8, 12), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
+        initTable.put(6, setTableStatus(Collections.emptyList(),Collections.emptyList(), Arrays.asList(2,6,8,12), Collections.emptyList(), Collections.emptyList()));
         initTable.put(7, setTableStatus(Arrays.asList(0, 14), Collections.emptyList(), Arrays.asList(3, 11), Collections.emptyList(), Collections.singletonList(7)));
-        initTable.put(8, setTableStatus(Collections.emptyList(), Arrays.asList(2, 6, 8, 12), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
+        initTable.put(8, setTableStatus(Collections.emptyList(), Collections.emptyList(), Arrays.asList(2,6,8,12), Collections.emptyList(), Collections.emptyList()));
         initTable.put(9, setTableStatus(Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Arrays.asList(1, 5, 9, 13), Collections.emptyList()));
         initTable.put(10, setTableStatus(Collections.emptyList(), Collections.emptyList(), Collections.emptyList(), Arrays.asList(4, 10), Collections.emptyList()));
         initTable.put(11, setTableStatus(Collections.emptyList(), Arrays.asList(3, 11), Arrays.asList(0, 7, 14), Collections.emptyList(), Collections.emptyList()));
         initTable.put(12, setTableStatus(Collections.emptyList(), Arrays.asList(2, 12), Arrays.asList(6, 8), Collections.emptyList(), Collections.emptyList()));
         initTable.put(13, setTableStatus(Collections.emptyList(), Arrays.asList(1, 13), Collections.emptyList(), Arrays.asList(5, 9), Collections.emptyList()));
-        initTable.put(14, setTableStatus(Arrays.asList(0, 7, 14), Arrays.asList(3, 11), Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
+        initTable.put(14, setTableStatus(Arrays.asList(0, 7, 14),Collections.emptyList(), Arrays.asList(3, 11), Collections.emptyList(), Collections.emptyList()));
 
         return initTable;
     }

@@ -1,5 +1,6 @@
 package com.example.a_math.Game.Engine;
 
+import static com.example.a_math.Game.Engine.Validate.start;
 import static com.example.a_math.Game.Engine.initObj.paddingPiecePx;
 import static com.example.a_math.Game.Engine.initObj.paddingSelectPiecePx;
 import static com.example.a_math.Game.Engine.initObj.paddingSelectPx;
@@ -143,6 +144,7 @@ public class initMotion {
     }
 
     private static void submitOnTouch(Activity activity, Button btn, HashMap<String, Integer> idMap) {
-        btn.setOnClickListener(view -> onButtonShowPopupWindowClick(activity, btn));
+//        btn.setOnClickListener(view -> onButtonShowPopupWindowClick(activity, btn));
+        btn.setOnClickListener(view -> start(activity, idMap));
     }
 }

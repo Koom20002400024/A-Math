@@ -21,12 +21,13 @@ public class Game {
     public static void start(Activity activity, int map) {
 
         HashMap<Integer, List<String>> table_map = new HashMap<>();
+        HashMap<Integer, String> select_chip = new HashMap<>();
 
         try {
             Class<?> cls = Class.forName("com.example.a_math.Game.Map.Map"+map);
-            Constructor<?> constructor = cls.getConstructor(HashMap.class);
+            Constructor<?> constructor = cls.getConstructor(HashMap.class, HashMap.class);
 
-            constructor.newInstance(table_map);
+            constructor.newInstance(table_map, select_chip);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -39,7 +40,7 @@ public class Game {
             e.printStackTrace();
         }
 
-        initAllObj(activity, idMap, table_map);
+        initAllObj(activity, idMap, table_map, select_chip);
         initMotionObj(activity, idMap);
     }
 }
