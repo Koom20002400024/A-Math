@@ -1,9 +1,6 @@
 package com.example.a_math;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.graphics.Color;
 import android.os.Build;
 
@@ -23,10 +20,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     boolean selected = false;
 
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
 
         ConstraintLayout.LayoutParams layout2Params = new ConstraintLayout.LayoutParams(piece * 12, piece * 2);
         select.setBackground(getDrawable(R.drawable.black));
-        select.setX((metrics.widthPixels - (piece * 12)) / 2);
+        select.setX((metrics.widthPixels - (piece * 12)) / 2F);
         select.setY(height + (50 * density));
         select.setLayoutParams(layout2Params);
 
         ConstraintLayout.LayoutParams layout3Params = new ConstraintLayout.LayoutParams((piece * 12) + (20 * density), (5 * density));
         selectAfter.setBackgroundColor(Color.BLACK);
-        selectAfter.setX((metrics.widthPixels - ((piece * 12) + (20 * density))) / 2);
+        selectAfter.setX((metrics.widthPixels - ((piece * 12) + (20 * density))) / 2F);
         selectAfter.setY(height + (50 * density) + (piece * 2));
         selectAfter.setLayoutParams(layout3Params);
 
@@ -118,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
         cal.setId(idMap.get(idName));
         cal.setText("SUBMIT");
-        ConstraintLayout.LayoutParams layout4Params = new ConstraintLayout.LayoutParams(250,125);
-        cal.setX((metrics.widthPixels - 250) / 2);
+        ConstraintLayout.LayoutParams layout4Params = new ConstraintLayout.LayoutParams((150 * density) ,(75 * density));
+        cal.setX((metrics.widthPixels - (150 * density)) / 2F);
         cal.setY(height + (50 * density) + (piece * 2) + 70);
         cal.setLayoutParams(layout4Params);
 //        buttonCal.addView(cal);
@@ -132,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
         int width_select = (piece * 12) - paddingSelectPx * 2;
         int piece_select = (width_select - (paddingSelectPiecePx * (select_num - 1))) / select_num;
-        int height_select = paddingSelectPx;
 
 
         for (int i = 0; i < select_num; i++) {
@@ -147,19 +142,26 @@ public class MainActivity extends AppCompatActivity {
             iv.setId(idMap.get(idName));
 
             if (i == 0) {
-                random_ship(iv);
+                iv.setImageDrawable(getDrawable(R.drawable.plus_delete));
+                iv.setTag("+/-");
             } else if (i == 1) {
-                random_ship(iv);
+                iv.setImageDrawable(getDrawable(R.drawable.plus));
+                iv.setTag("+");
             } else if (i == 2) {
-                random_ship(iv);
+                iv.setImageDrawable(getDrawable(R.drawable.delete));
+                iv.setTag("-");
             } else if (i == 3) {
-                random_ship(iv);
+                iv.setImageDrawable(getDrawable(R.drawable.a1));
+                iv.setTag("1");
             } else if (i == 4) {
-                random_ship(iv);
+                iv.setImageDrawable(getDrawable(R.drawable.a19));
+                iv.setTag("19");
             } else if (i == 5) {
-                random_ship(iv);
+                iv.setImageDrawable(getDrawable(R.drawable.delete));
+                iv.setTag("-");
             } else if (i == 6) {
-                random_ship(iv);
+                iv.setImageDrawable(getDrawable(R.drawable.a18));
+                iv.setTag("18");
             } else if (i == 7) {
                 iv.setImageDrawable(getDrawable(R.drawable.equal));
                 iv.setTag("=");
@@ -295,16 +297,19 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<Integer> x = eq_list.get("x");
                 ArrayList<Integer> y = eq_list.get("y");
                 for (int i = 0; i < x.size(); i++) {
-                    Log.e("555", "X: "+ x.get(i)+ "| Y: "+ y.get(i));
-                    ArrayList<Integer> up = cal_c(x.get(i),y.get(i),"up","x",0,14);
-                    ArrayList<Integer> down = cal_c(x.get(i),y.get(i),"down","x",0,14);
-                    boolean up_down = Calculate.check_eq(up,down);
-                    ArrayList<Integer> left = cal_c(x.get(i),y.get(i),"left","y",0,14);
-                    ArrayList<Integer> right = cal_c(x.get(i),y.get(i),"right","y",0,14);
-                    boolean left_right = Calculate.check_eq(left, right);
+                    Log.e("555", "X: "+ x.get(i)+ " | Y: "+ y.get(i));
+                    ArrayList<Double> up = cal_c(x.get(i),y.get(i),"up","x",0,14);
+                    ArrayList<Double> down = cal_c(x.get(i),y.get(i),"down","x",0,14);
+                    Boolean up_down = Calculate.check_eq(up,down);
+                    ArrayList<Double> left = cal_c(x.get(i),y.get(i),"left","y",0,14);
+                    ArrayList<Double> right = cal_c(x.get(i),y.get(i),"right","y",0,14);
+                    Boolean left_right = Calculate.check_eq(left, right);
                     Log.e("555", "UP&DOWN: "+ up.toString()+ "&"+ down.toString()+" -> "+up_down);
                     Log.e("555", "LEFT&RIGHT: "+ left.toString()+ "&"+ right.toString()+" -> "+left_right);
-                    if (up_down || left_right){
+                    if (up_down == null || left_right == null){
+                        list_eq.add(null);
+                    }
+                    else if (up_down || left_right){
                         list_eq.add(true);
                     }
                     else{
@@ -312,11 +317,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                if (list_eq.size() > 0 && Collections.frequency(list_eq,true)== list_eq.size()){
-                    Toast.makeText(MainActivity.this,"pass",Toast.LENGTH_LONG).show();
+                if (list_eq.size() == 0) {
+                    Toast.makeText(MainActivity.this,"Can't find equation",Toast.LENGTH_SHORT).show();
+                }
+                else if (list_eq.contains(null)) {
+                    Toast.makeText(MainActivity.this,"Pattern equation not correct",Toast.LENGTH_SHORT).show();
+                }
+                else if (Collections.frequency(list_eq,true)== list_eq.size()){
+                    Toast.makeText(MainActivity.this,"Pass",Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(MainActivity.this,"not pass",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,"Not pass",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -671,7 +682,7 @@ public class MainActivity extends AppCompatActivity {
         return hashMap;
     }
 
-    public ArrayList<Integer> cal_c(int x, int y, String direct, String coordinate, int min, int max) {
+    public ArrayList<Double> cal_c(int x, int y, String direct, String coordinate, int min, int max) {
         if (coordinate.equals("x")) {
             if (direct.equals("up")) {
                 return loop_cal("y", x, y, min, -1);
@@ -690,46 +701,48 @@ public class MainActivity extends AppCompatActivity {
         return null;
     }
 
-    public ArrayList<Integer> loop_cal (String coordinate, int coo_n, int start, int end, int increment){
-        ArrayList<Integer> save_result = new ArrayList<>();
+    public ArrayList<Double> loop_cal (String coordinate, int coo_n, int start, int end, int increment) {
+        ArrayList<Double> save_result = new ArrayList<>();
+        ArrayList<String> save_eq = new ArrayList<>();
         start += increment ;
-        int sum = 0;
-        boolean cal = false;
-        String type = "None";
-        String result = null;
-//        Log.e("555", "loop_cal: "+start+" "+end+" "+end+increment);
+        String result = "";
         while (start != end+increment) {
+
             if (coordinate.equals("x")){
                 result = getIV(start, coo_n);
             }
             else if (coordinate.equals("y")) {
                 result = getIV(coo_n, start);
             }
-            Log.e("555", "result: "+ result);
-            if (result.equals("")) {
-                if (cal) {
-                    save_result.add(sum);
+
+            if (result.equals("") || result.equals("r") || result.equals("y") || result.equals("o") || result.equals("b") || result.equals("s")) {
+                if (save_eq.size() > 0) {
+                    save_result.add(Calculate.calculate(save_eq, increment));
                 }
                 break;
             }
-            else if (result.equals("=")) {
-                save_result.add(sum);
-                sum = 0;
+            else if (result.equals("=")) { // เริ่มการคำนวนต่อ ถ้าเจอ =
+                save_result.add(Calculate.calculate(save_eq, increment));
+                save_eq = new ArrayList<>();
             }
-            else if (start == end) {
-                save_result.add(sum + Integer.parseInt(result));
+            else if (start == end) { // ค่าอยูตำแหน่ง่ขอบตาราง *ต้องเป็นตัวเลข
+                save_eq.add(result);
+                save_result.add(Calculate.calculate(save_eq, increment));
+            } else {
+                if (!Calculate.isNumeric(result)) {  // ต้องเป็นตัวอักษร + - * /
+                    // มีแค่ - เท่านั้นที่สามารถติดกับ = ได้ || สมการต้องมี ตัวดำเนินการติดกันเพียงแค่ 1
+                    if ((save_eq.size() == 0 && !result.equals("-")) || (save_eq.size() > 0 && !Calculate.isNumeric(save_eq.get(save_eq.size()-1)))) {
+                        save_result.add(null);
+                        break;
+                    }
+                }
+                save_eq.add(result);
             }
-            else if (Calculate.isNumeric(result)) {
-                sum = Calculate.operator(type, sum, Integer.parseInt(result));
-            }
-            else{
-                type = result;
-            }
-            cal = true;
             start += increment;
         }
         return save_result;
     }
+
 
 
 }
