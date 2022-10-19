@@ -17,8 +17,12 @@ import static com.example.a_math.Game.UI.Interface.setStatus;
 import static com.example.a_math.Game.UI.Interface.setStatus_onTouch;
 import static com.example.a_math.Game.UI.Table.getStatus;
 
+import static java.security.AccessController.getContext;
+
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Build;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +30,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.a_math.Options.SharePrefMap;
 import com.example.a_math.R;
 
 import java.util.HashMap;
@@ -145,6 +150,15 @@ public class initMotion {
 
     private static void submitOnTouch(Activity activity, Button btn, HashMap<String, Integer> idMap) {
 //        btn.setOnClickListener(view -> onButtonShowPopupWindowClick(activity, btn));
-        btn.setOnClickListener(view -> start(activity, idMap));
+        btn.setOnClickListener(view -> {
+            boolean game = start(activity, idMap);
+            SharePrefMap sharePref = new SharePrefMap(activity);
+            String mapper = sharePref.loadMap();
+            Log.i("SCORE", mapper);
+            sharePref.setMap("90");
+            if (game) {
+                sharePref.setMap("180");
+            }
+        });
     }
 }

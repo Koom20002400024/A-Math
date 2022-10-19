@@ -31,7 +31,7 @@ public class Validate {
     static List<Boolean> list_eq = new ArrayList<>();
     static String check_operation;
 
-    static void start(Activity activity, HashMap<String, Integer> idMap) {
+    static boolean start(Activity activity, HashMap<String, Integer> idMap) {
         HashMap<String, ?> dict = find_and_count(activity, idMap);
         List<Integer> x_list = (List<Integer>) dict.get("x");
         List<Integer> y_list = (List<Integer>) dict.get("y");
@@ -72,18 +72,23 @@ public class Validate {
                 }
                 if (list_eq.contains(null) || list_op.size() != t){
                     System.out.println("> Error 1.");
+                    return false;
                 }
                 else if (!list_eq.contains(false)) {
                     System.out.println("> Pass.");
+                    return  true;
                 }
                 else {
                     System.out.println("> NOT Pass.");
+                    return false;
                 }
             } else {
                 System.out.println("> Error 2 .");
+                return false;
             }
         } else {
             System.out.println("> Error 3.");
+            return false;
         }
     }
 

@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        start(MainActivity.this, 2);
+        int map = getIntent().getIntExtra("map",1);
+        start(MainActivity.this, map);
     }
 }
