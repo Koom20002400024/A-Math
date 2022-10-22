@@ -185,41 +185,56 @@ public class initMotion {
 
             if (passed) {
                 HashMap<String, Object> dictNew = (HashMap<String, Object>) find_and_count(activity, idMap);
-                int eqCountNew = 0, eqCountOld = 0;
-                for (String item: (List<String>) dictNew.get("operation")) {
-                    if (item.equals("=")) {
-                        eqCountNew++;
+                System.out.println("New: " + dictNew);
+                if (true) {
+                    int eqCountNew = 0, eqCountOld = 0;
+                    for (String item : (List<String>) dictNew.get("operation")) {
+                        if (item.equals("=")) {
+                            eqCountNew++;
+                        }
                     }
-                }
-                for (String item: (List<String>) dictOld.get("operation")) {
-                    if (item.equals("=")) {
-                        eqCountOld++;
+                    for (String item : (List<String>) dictOld.get("operation")) {
+                        if (item.equals("=")) {
+                            eqCountOld++;
+                        }
                     }
-                }
-                int diffEq = eqCountNew - eqCountOld;
-                dictOld.put("count", dictNew.get("count"));
-                dictOld.put("operation", dictNew.get("operation"));
-                List<Integer> xList = (List<Integer>) dictOld.get("x");
-                List<Integer> yList = (List<Integer>) dictOld.get("y");
-                for (int i = 0; i < diffEq; i++) {
-                    int x = ((List<Integer>) dictNew.get("x")).get(i);
-                    int y = ((List<Integer>) dictNew.get("y")).get(i);
-                    xList.add(eqCountOld+i, x);
-                    yList.add(eqCountOld+i, y);
-                }
-                int newCount = (int) dictNew.get("count");
-                int count = xList.size();
-                int diffCount = newCount - count;
-                for (int i = diffCount; i > 0; i--) {
-                    int x = ((List<Integer>) dictNew.get("x")).get(newCount-i);
-                    int y = ((List<Integer>) dictNew.get("y")).get(newCount-i);
-                    xList.add(x);
-                    yList.add(y);
-                }
-                dictOld.put("x", xList);
-                dictOld.put("y", yList);
+                    int diffEq = eqCountNew - eqCountOld;
+                    dictOld.put("count", dictNew.get("count"));
+                    dictOld.put("operation", dictNew.get("operation"));
+                    List<Integer> xList = ((List<Integer>) dictOld.get("x")).subList(0, eqCountOld);
+                    List<Integer> yList = ((List<Integer>) dictOld.get("y")).subList(0, eqCountOld);
+                    int maxX = 0, maxY = 0;
+                    for (int i = 0; i < eqCountOld; i++) {
+                        int currX = ((List<Integer>) dictOld.get("x")).get(i);
+                        int currY = ((List<Integer>) dictOld.get("y")).get(i);
+                        if (currX > maxX) {
+                            maxX = currX;
+                        }
+                        if (currY > maxY) {
+                            maxY = currY;
+                        }
+                    }
+                    for (int i = 0; i < diffEq; i++) {
+                        int x = ((List<Integer>) dictNew.get("x")).get(i);
+                        int y = ((List<Integer>) dictNew.get("y")).get(i);
+//                        xList.add(eqCountOld+i, x);
+//                        yList.add(eqCountOld+i, y);
+                        System.out.println("X: "+x+" MaxX: "+maxX+" Y: "+y+" MaxY: "+maxY);
+                        if (x > maxX || y > maxY) {
+                            xList.add(x);
+                            yList.add(y);
+//                            eqCountOld++;
+                        }
+                    }
+                    List<Integer> xTail = ((List<Integer>) dictNew.get("x")).subList(eqCountNew-1, ((int) dictNew.get("count")));
+                    List<Integer> yTail = ((List<Integer>) dictNew.get("y")).subList(eqCountNew-1, ((int) dictNew.get("count")));
+                    xList.addAll(xTail);
+                    yList.addAll(yTail);
+                    dictOld.put("x", xList);
+                    dictOld.put("y", yList);
 
-                System.out.println("Edit: "+dictOld);
+                    System.out.println("Edit: " + dictOld);
+                }
 
                 int currentPoint = startPoint(activity, idMap, dictOld);
                 int pointGame = Math.abs(currentPoint - pointOrigin);
