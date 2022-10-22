@@ -84,6 +84,7 @@ public class initObj {
         int x_btn = (metrics.widthPixels - 250) / 2;
         int y_btn = y_selectAfter + 70;
         createBtn(activity, idMap, "submit", new Button(activity), 250, 125, "SUBMIT", x_btn, y_btn);
+        createBtn(activity, idMap, "new_chip", new Button(activity), 250, 125, "NEW CHIP", x_btn+250+30, y_btn);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)

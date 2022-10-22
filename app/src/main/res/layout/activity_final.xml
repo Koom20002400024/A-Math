@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinalActivity"
+    android:background="@drawable/bg">
+
+    <RelativeLayout
+        android:id="@+id/head"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#6DCC7BDA">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/person"></ImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/star_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="50dp"></TextView>
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignRight="@id/star_count"
+                android:background="@drawable/star_mapcl"></ImageView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/head"
+        android:paddingLeft="20dp"
+        android:paddingTop="60dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="60dp">
+
+        <RelativeLayout
+            android:id="@+id/body_final"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bgblue">
+
+            <TextView
+                android:id="@+id/youwon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="YOU WON"
+                android:textColor="@color/black"
+                android:textSize="80dp"></TextView>
+
+            <ImageView
+                android:id="@+id/star_final1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/youwon"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/star_map"></ImageView>
+
+            <ImageView
+                android:id="@+id/star_final2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/youwon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/star_map"></ImageView>
+
+            <ImageView
+                android:id="@+id/star_final3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/youwon"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="70dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/star_map"></ImageView>
+
+            <ImageView
+                android:id="@+id/next"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/star_final3"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/next"></ImageView>
+
+            <ImageView
+                android:id="@+id/home"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/next"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/home"></ImageView>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

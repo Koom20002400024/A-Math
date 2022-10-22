@@ -1,13 +1,16 @@
 package com.example.a_math.Game.Engine;
 
+import static com.example.a_math.Game.Engine.Point.startPoint;
+import static com.example.a_math.Game.Engine.Validate.find_and_count;
 import static com.example.a_math.Game.Engine.Validate.start;
+import static com.example.a_math.Game.Engine.initObj.createSelect;
 import static com.example.a_math.Game.Engine.initObj.paddingPiecePx;
 import static com.example.a_math.Game.Engine.initObj.paddingSelectPiecePx;
 import static com.example.a_math.Game.Engine.initObj.paddingSelectPx;
 import static com.example.a_math.Game.Engine.initObj.paddingStrokePx;
 import static com.example.a_math.Game.Engine.initObj.piece;
 import static com.example.a_math.Game.Engine.initObj.piece_select;
-import static com.example.a_math.Game.Popup.onButtonShowPopupWindowClick;
+import static com.example.a_math.Game.Setting.getNum;
 import static com.example.a_math.Game.Setting.getSelectNum;
 import static com.example.a_math.Game.UI.Chip.getIVTag;
 import static com.example.a_math.Game.UI.Chip.saveIVTag;
@@ -17,10 +20,8 @@ import static com.example.a_math.Game.UI.Interface.setStatus;
 import static com.example.a_math.Game.UI.Interface.setStatus_onTouch;
 import static com.example.a_math.Game.UI.Table.getStatus;
 
-import static java.security.AccessController.getContext;
-
 import android.app.Activity;
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -30,26 +31,39 @@ import android.widget.ImageView;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.a_math.FinalActivity;
+import com.example.a_math.GameActivity;
 import com.example.a_math.Options.SharePrefMap;
+import com.example.a_math.Options.SharePrefStar;
 import com.example.a_math.R;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class initMotion {
 
     static int save_select = -1;
     static String save_state = "";
     static boolean selected = false;
+    static int newChip = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
-    public static void initMotionObj(Activity activity, HashMap<String, Integer> idMap) {
+    public static void initMotionObj(Activity activity, HashMap<String, Integer> idMap, int map, int pointOrigin, HashMap<Integer, Integer> point, int initNewChip, HashMap<String, Object> dict) {
         View view = activity.findViewById(R.id.table);
         View view_select = activity.findViewById(R.id.select);
 
         tableOnTouch(activity, view, idMap);
         selectOnTouch(activity, view_select, idMap);
 
-        submitOnTouch(activity, activity.findViewById(idMap.get("submit")), idMap);
+        newChip = initNewChip;
+        submitOnTouch(activity, activity.findViewById(idMap.get("submit")), idMap, map, pointOrigin, point, dict);
+        newChipOnTouch(activity, activity.findViewById(idMap.get("new_chip")), idMap, map);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -148,16 +162,218 @@ public class initMotion {
         });
     }
 
-    private static void submitOnTouch(Activity activity, Button btn, HashMap<String, Integer> idMap) {
+    private static String join(List<?> list, String delimit) {
+        int len = list.size();
+        if (len == 0)
+            return "";
+        StringBuilder sb = new StringBuilder(list.get(0).toString());
+        for (int i = 1; i < len; i++) {
+            sb.append(delimit);
+            sb.append(list.get(i).toString());
+        }
+        return sb.toString();
+    }
+
+    private static void submitOnTouch(Activity activity, Button btn, HashMap<String, Integer> idMap, int map, int pointOrigin, HashMap<Integer, Integer> point, HashMap<String, Object> dictOld) {
 //        btn.setOnClickListener(view -> onButtonShowPopupWindowClick(activity, btn));
         btn.setOnClickListener(view -> {
-            boolean game = start(activity, idMap);
+            boolean passed = start(activity, idMap);
             SharePrefMap sharePref = new SharePrefMap(activity);
+            SharePrefStar sharePrefStar = new SharePrefStar(activity);
             String mapper = sharePref.loadMap();
-            Log.i("SCORE", mapper);
-            sharePref.setMap("90");
-            if (game) {
-                sharePref.setMap("180");
+            String allStar = sharePrefStar.loadStar();
+
+            if (passed) {
+                HashMap<String, Object> dictNew = (HashMap<String, Object>) find_and_count(activity, idMap);
+                int eqCountNew = 0, eqCountOld = 0;
+                for (String item: (List<String>) dictNew.get("operation")) {
+                    if (item.equals("=")) {
+                        eqCountNew++;
+                    }
+                }
+                for (String item: (List<String>) dictOld.get("operation")) {
+                    if (item.equals("=")) {
+                        eqCountOld++;
+                    }
+                }
+                int diffEq = eqCountNew - eqCountOld;
+                dictOld.put("count", dictNew.get("count"));
+                dictOld.put("operation", dictNew.get("operation"));
+                List<Integer> xList = (List<Integer>) dictOld.get("x");
+                List<Integer> yList = (List<Integer>) dictOld.get("y");
+                for (int i = 0; i < diffEq; i++) {
+                    int x = ((List<Integer>) dictNew.get("x")).get(i);
+                    int y = ((List<Integer>) dictNew.get("y")).get(i);
+                    xList.add(eqCountOld+i, x);
+                    yList.add(eqCountOld+i, y);
+                }
+                int newCount = (int) dictNew.get("count");
+                int count = xList.size();
+                int diffCount = newCount - count;
+                for (int i = diffCount; i > 0; i--) {
+                    int x = ((List<Integer>) dictNew.get("x")).get(newCount-i);
+                    int y = ((List<Integer>) dictNew.get("y")).get(newCount-i);
+                    xList.add(x);
+                    yList.add(y);
+                }
+                dictOld.put("x", xList);
+                dictOld.put("y", yList);
+
+                System.out.println("Edit: "+dictOld);
+
+                int currentPoint = startPoint(activity, idMap, dictOld);
+                int pointGame = Math.abs(currentPoint - pointOrigin);
+
+                System.out.println("Origin Point "+pointOrigin+", Game Point "+currentPoint+", Final Point:"+pointGame);
+                List<String> mapList = new ArrayList<>(Arrays.asList(mapper.split(",")));
+                List<String> starSumList = new ArrayList<>(Arrays.asList(allStar.split(":")));
+
+                int star1 = point.get(1); //30
+                int star2 = point.get(2); //50
+                int star3 = point.get(3); //100
+
+                int starNew;
+
+                if (pointGame < star1) {
+                    starNew = 0;
+                } else if (pointGame < star2) {
+                    starNew = 1;
+                } else if (pointGame < star3) {
+                    starNew = 2;
+                } else {
+                    starNew = 3;
+                }
+
+                // "5:2,3"
+                // "5:2,1"
+                try {
+                    String[] findMap = mapList.get(map-1).split(":");
+                    int allSumStar = Integer.parseInt(starSumList.get(0));
+                    int findStar = Integer.parseInt(starSumList.get(1).split(",")[map-1]);
+                    int oldPoint = Integer.parseInt(findMap[1]);
+
+                    if (findStar < starNew) {
+                        allSumStar = allSumStar - findStar + starNew;
+                        List<String> starList = new ArrayList<>(Arrays.asList(starSumList.get(1).split(",")));
+                        starList.set(map-1, starNew+"");
+                        sharePrefStar.setStar(allSumStar+":"+join(starList, ","));
+                    }
+
+                    if (oldPoint < pointGame) {
+                        String scoreMap = starNew + ":" + pointGame;
+                        mapList.set(map - 1, scoreMap);
+                        mapper = join(mapList, ",");
+                    }
+                } catch (Exception ex) {
+                    String scoreMap = starNew + ":" + pointGame;
+                    if (map == 1) {
+                        mapList.set(0, scoreMap);
+                        sharePrefStar.setStar(starNew+":"+starNew);
+                    } else {
+                        mapList.add(scoreMap);
+
+                        int allSumStar = Integer.parseInt(starSumList.get(0));
+                        allSumStar = allSumStar + starNew;
+                        List<String> starList = new ArrayList<>(Arrays.asList(starSumList.get(1).split(",")));
+                        starList.add(starNew+"");
+                        sharePrefStar.setStar(allSumStar+":"+join(starList, ","));
+                    }
+                    mapper = join(mapList, ",");
+                }
+
+                sharePref.setMap(mapper);
+                Log.i("SCORE", mapper);
+
+                Intent i = new Intent(activity, FinalActivity.class);
+                i.putExtra("map" , map+1);
+                i.putExtra("starNew" , starNew);
+                activity.startActivity(i);
+                activity.finish();
+            }
+        });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    private static void newChipOnTouch(Activity activity, Button btn, HashMap<String, Integer> idMap, int map) {
+        btn.setOnClickListener(view -> {
+            SharePrefStar sharePrefStar = new SharePrefStar(activity);
+
+            String allStar = sharePrefStar.loadStar(); // "" ,"5:2,3"
+            if (newChip > 0 && !allStar.equals("")) {
+                int allSumStar = Integer.parseInt(allStar.split(":")[0]);
+                if (allSumStar > 0) {
+//                    sharePrefStar.setStar(allSumStar-1+":"+allStar.split(":")[1]);
+
+                    System.out.println(newChip);
+                    HashMap<Integer, String> select_chip = new HashMap<>();
+                    try {
+                        Class<?> cls = Class.forName("com.example.a_math.Game.Map.Map"+map);
+                        Method method = cls.getDeclaredMethod("getChip"+newChip, HashMap.class);
+
+                        method.invoke(new HashMap<>(), select_chip);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+
+                    ImageView iv_select1 = activity.findViewById(idMap.get("select0"));
+                    ImageView iv_select2 = activity.findViewById(idMap.get("select1"));
+                    ImageView iv_select3 = activity.findViewById(idMap.get("select2"));
+                    ImageView iv_select4 = activity.findViewById(idMap.get("select3"));
+                    ImageView iv_select5 = activity.findViewById(idMap.get("select4"));
+                    ImageView iv_select6 = activity.findViewById(idMap.get("select5"));
+                    ImageView iv_select7 = activity.findViewById(idMap.get("select6"));
+                    ImageView iv_select8 = activity.findViewById(idMap.get("select7"));
+
+                    setChip(activity, iv_select1, select_chip.get(0));
+                    setChip(activity, iv_select2, select_chip.get(1));
+                    setChip(activity, iv_select3, select_chip.get(2));
+                    setChip(activity, iv_select4, select_chip.get(3));
+                    setChip(activity, iv_select5, select_chip.get(4));
+                    setChip(activity, iv_select6, select_chip.get(5));
+                    setChip(activity, iv_select7, select_chip.get(6));
+                    setChip(activity, iv_select8, select_chip.get(7));
+
+                    for (int i = 0; i < getNum(); i++) {
+                        for (int j = 0; j < getNum(); j++) {
+                            ImageView iv = activity.findViewById(idMap.get("x" + j + "y" + i));
+
+                            if (!(Boolean) getIVTag(iv, "locked")) {
+                                saveIVTag(iv, "value", null);
+                                setStatus(activity, iv, (String) getIVTag(iv, "type"));
+                            }
+                        }
+                    }
+
+                    saveIVTag(iv_select1, "used", false);
+                    saveIVTag(iv_select2, "used", false);
+                    saveIVTag(iv_select3, "used", false);
+                    saveIVTag(iv_select4, "used", false);
+                    saveIVTag(iv_select5, "used", false);
+                    saveIVTag(iv_select6, "used", false);
+                    saveIVTag(iv_select7, "used", false);
+                    saveIVTag(iv_select8, "used", false);
+
+                    iv_select1.setAlpha(1F);
+                    iv_select2.setAlpha(1F);
+                    iv_select3.setAlpha(1F);
+                    iv_select4.setAlpha(1F);
+                    iv_select5.setAlpha(1F);
+                    iv_select6.setAlpha(1F);
+                    iv_select7.setAlpha(1F);
+                    iv_select8.setAlpha(1F);
+
+                    save_state = "";
+                    selected = false;
+                    save_select = -1;
+
+                    newChip--;
+                }
             }
         });
     }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Map4 {
-    public Map4(HashMap<Integer, List<String>> table_map, HashMap<Integer, String> select_chip){
+    public Map4(HashMap<Integer, List<String>> table_map, HashMap<Integer, String> select_chip, HashMap<Integer, Integer> point){
         table_map.put(0, Arrays.asList(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null));
         table_map.put(1, Arrays.asList(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null));
         table_map.put(2, Arrays.asList(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null));
@@ -30,5 +30,9 @@ public class Map4 {
         select_chip.put(5, "=");
         select_chip.put(6, "=");
         select_chip.put(7, "=");
+
+        point.put(1, 30);
+        point.put(2, 50);
+        point.put(3, 100);
     }
 }

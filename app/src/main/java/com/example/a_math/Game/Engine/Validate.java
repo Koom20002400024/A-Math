@@ -41,6 +41,9 @@ public class Validate {
         if (o.contains("=")){
             Integer t = travel(activity, idMap, x_list.get(0), y_list.get(0), new ArrayList<>());
             if (t == count){
+                list_op_state = new ArrayList<>();
+                list_op = new ArrayList<>();
+                list_eq = new ArrayList<>();
                 for (int i = 0; i < count; i++) {
                     int x = x_list.get(i);
                     int y = y_list.get(i);
@@ -141,13 +144,13 @@ public class Validate {
             return engine(activity, idMap, direct, x, y, min, -1);
         }
         else if (direct.equals("down")){
-            return engine(activity, idMap,direct, x, y, max, 1);
+            return engine(activity, idMap, direct, x, y, max, 1);
         }
         if (direct.equals("left")){
-            return engine(activity, idMap,direct, x, y, min, -1);
+            return engine(activity, idMap, direct, y, x, min, -1);
         }
         else if (direct.equals("right")){
-            return engine(activity, idMap,direct, x, y, max, 1);
+            return engine(activity, idMap, direct, y, x, max, 1);
         }
         return null;
     }
@@ -167,7 +170,6 @@ public class Validate {
                 cur_index = con+"_"+start;
             }
             else if (direct.equals("left") || direct.equals("right")) {
-
                 result = getValueIV(activity, idMap, start, con);
                 cur_index =start+"_"+con;
             }
@@ -177,10 +179,10 @@ public class Validate {
             }
 
             if (check_operation.equals("=")){
-                if ((direct.equals("up") || direct.equals("down")) && around_coordinate (activity, idMap, con, start) && list_op_state.contains(cur_index)){
+                if ((direct.equals("up") || direct.equals("down")) && around_coordinate (activity, idMap, con, start) && !list_op_state.contains(cur_index)){
                     list_op_state.add(cur_index);
                 }
-                else if((direct.equals("left") || direct.equals("right")) && around_coordinate (activity, idMap, start, con) && list_op_state.contains(cur_index)){
+                else if((direct.equals("left") || direct.equals("right")) && around_coordinate (activity, idMap, start, con) && !list_op_state.contains(cur_index)){
                     list_op_state.add(cur_index);
                 }
                 if (!list_op.contains(cur_index)){
@@ -198,7 +200,15 @@ public class Validate {
 
     static Double calculate(String eq_text){
         StringBuilder text = new StringBuilder(eq_text);
-        if ((eq_text.equals("") || !isNumeric(String.valueOf(text.charAt(0))) && !String.valueOf(text.charAt(0)).equals("-")) || (String.valueOf(text.charAt(0)).equals("-") && String.valueOf(text.charAt(1)).equals("0")) || (String.valueOf(text.charAt(0)).equals("0") && isNumeric(String.valueOf(text.charAt(1))))) {
+        try {
+            if (
+                    (eq_text.equals("") ||
+                            !isNumeric(String.valueOf(text.charAt(0))) && !String.valueOf(text.charAt(0)).equals("-")) ||
+                            (String.valueOf(text.charAt(0)).equals("-") && String.valueOf(text.charAt(1)).equals("0")) ||
+                            (String.valueOf(text.charAt(0)).equals("0") && isNumeric(String.valueOf(text.charAt(1))))) {
+                return null;
+            }
+        } catch (Exception ex) {
             return null;
         }
 
@@ -208,7 +218,7 @@ public class Validate {
                 count = 0;
             }
             else{
-                if (count >  2){
+                if (count >  2) {
                     return null;
                 }
                 count += 1;
@@ -242,12 +252,17 @@ public class Validate {
             return null;
         }
 
-        List<String> result_split = Arrays.asList(result.split("="));
+        // 1=1=
+        // Java [1,1], Python [1, 1, ""]
+        List<String> result_split = new ArrayList<>(Arrays.asList(result.split("=")));
+        if ("=".equals(new String(new char[]{result.charAt(result.length()-1)}))) {
+            result_split.add("");
+        }
         List<Double> result_eq = new ArrayList<>();
         for (String item : result_split) {
             result_eq.add(calculate(item));
         }
-        if (result_eq.contains(null)){
+        if (result_eq.contains(null)) {
             return null;
         }
         Set<Double> set = new HashSet<>(result_eq);

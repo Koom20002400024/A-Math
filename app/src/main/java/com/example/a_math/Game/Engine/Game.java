@@ -1,5 +1,7 @@
 package com.example.a_math.Game.Engine;
 
+import static com.example.a_math.Game.Engine.Point.startPoint;
+import static com.example.a_math.Game.Engine.Validate.find_and_count;
 import static com.example.a_math.Game.Engine.initMotion.initMotionObj;
 import static com.example.a_math.Game.Engine.initObj.initAllObj;
 
@@ -22,12 +24,15 @@ public class Game {
 
         HashMap<Integer, List<String>> table_map = new HashMap<>();
         HashMap<Integer, String> select_chip = new HashMap<>();
+        HashMap<Integer, Integer> point = new HashMap<>();
+
+        int initNewChip = 4;
 
         try {
             Class<?> cls = Class.forName("com.example.a_math.Game.Map.Map"+map);
-            Constructor<?> constructor = cls.getConstructor(HashMap.class, HashMap.class);
+            Constructor<?> constructor = cls.getConstructor(HashMap.class, HashMap.class, HashMap.class);
 
-            constructor.newInstance(table_map, select_chip);
+            constructor.newInstance(table_map, select_chip, point);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -41,6 +46,9 @@ public class Game {
         }
 
         initAllObj(activity, idMap, table_map, select_chip);
-        initMotionObj(activity, idMap);
+        HashMap<String, Object> dict = (HashMap<String, Object>) find_and_count(activity, idMap);
+        int pointOrigin = startPoint(activity, idMap, dict);
+        System.out.println("Old: "+dict);
+        initMotionObj(activity, idMap, map, pointOrigin, point, initNewChip, dict);
     }
 }

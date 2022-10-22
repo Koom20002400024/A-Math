@@ -3,13 +3,6 @@ package com.example.a_math.Options;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.a_math.Models.Mapper;
-
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
-import java.util.ArrayList;
-
 public class SharePrefMap {
 
     private final SharedPreferences sharedPreferencesMap;

@@ -2,30 +2,20 @@ package com.example.a_math;
 
 import static com.example.a_math.Game.Engine.Game.start;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import com.example.a_math.Options.SharePrefStar;
+
 import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class GameActivity extends AppCompatActivity {
 
     static HashMap<String, Integer> idMap = new HashMap<>();
 
@@ -35,7 +25,18 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView home_in_game = findViewById(R.id.home_in_game);
+
         int map = getIntent().getIntExtra("map",1);
-        start(MainActivity.this, map);
+        start(GameActivity.this, map);
+
+        home_in_game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GameActivity.this,HomeActivity.class));
+                finish();
+            }
+        });
     }
 }
