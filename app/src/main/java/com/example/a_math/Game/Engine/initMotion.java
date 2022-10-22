@@ -239,7 +239,6 @@ public class initMotion {
                 int currentPoint = startPoint(activity, idMap, dictOld);
                 int pointGame = Math.abs(currentPoint - pointOrigin);
 
-                System.out.println("Origin Point "+pointOrigin+", Game Point "+currentPoint+", Final Point:"+pointGame);
                 List<String> mapList = new ArrayList<>(Arrays.asList(mapper.split(",")));
                 List<String> starSumList = new ArrayList<>(Arrays.asList(allStar.split(":")));
 
@@ -248,6 +247,46 @@ public class initMotion {
                 int star3 = point.get(3); //100
 
                 int starNew;
+
+                ImageView iv_select1 = activity.findViewById(idMap.get("select0"));
+                ImageView iv_select2 = activity.findViewById(idMap.get("select1"));
+                ImageView iv_select3 = activity.findViewById(idMap.get("select2"));
+                ImageView iv_select4 = activity.findViewById(idMap.get("select3"));
+                ImageView iv_select5 = activity.findViewById(idMap.get("select4"));
+                ImageView iv_select6 = activity.findViewById(idMap.get("select5"));
+                ImageView iv_select7 = activity.findViewById(idMap.get("select6"));
+                ImageView iv_select8 = activity.findViewById(idMap.get("select7"));
+
+                int countSelect = 0;
+                if ((Boolean) getIVTag(iv_select1, "used")) {
+                    countSelect++;
+                }
+                if ((Boolean) getIVTag(iv_select2, "used")) {
+                    countSelect++;
+                }
+                if ((Boolean) getIVTag(iv_select3, "used")) {
+                    countSelect++;
+                }
+                if ((Boolean) getIVTag(iv_select4, "used")) {
+                    countSelect++;
+                }
+                if ((Boolean) getIVTag(iv_select5, "used")) {
+                    countSelect++;
+                }
+                if ((Boolean) getIVTag(iv_select6, "used")) {
+                    countSelect++;
+                }
+                if ((Boolean) getIVTag(iv_select7, "used")) {
+                    countSelect++;
+                }
+                if ((Boolean) getIVTag(iv_select8, "used")) {
+                    countSelect++;
+                }
+
+                if (countSelect == 8) {
+                    pointGame += 40;
+                }
+                System.out.println("Origin Point "+pointOrigin+", Game Point "+currentPoint+", Final Point:"+pointGame);
 
                 if (pointGame < star1) {
                     starNew = 0;

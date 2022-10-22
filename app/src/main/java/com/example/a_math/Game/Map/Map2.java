@@ -27,7 +27,7 @@ public class Map2 {
         select_chip.put(1, "=");
         select_chip.put(2, "-");
         select_chip.put(3, "18");
-        select_chip.put(4, "+");
+        select_chip.put(4, "2");
         select_chip.put(5, "/");
         select_chip.put(6, "20");
         select_chip.put(7, "0");
