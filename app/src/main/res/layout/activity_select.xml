@@ -14,21 +14,30 @@
         android:layout_height="100dp"
         android:background="#6DCC7BDA">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/person"></ImageView>
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/person"></ImageView>
 
             <TextView
+                android:id="@+id/name"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:textColor="@color/black"
+                android:textSize="50dp"></TextView>
+
+            <TextView
+                android:layout_marginLeft="20dp"
                 android:id="@+id/star_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,6 +48,7 @@
                 android:textSize="50dp"></TextView>
 
             <ImageView
+                android:layout_gravity="center"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_alignRight="@id/star_count"
@@ -92,6 +102,12 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -100,12 +116,6 @@
                         android:text="1"
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
-
-                    <ImageView
-                        android:id="@+id/Map1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/neverplay"></ImageView>
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -150,6 +160,12 @@
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map2"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -159,11 +175,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map2"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -205,6 +217,12 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map3"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -214,11 +232,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map3"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -263,6 +277,12 @@
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map4"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -272,11 +292,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map4"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -317,6 +333,12 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map5"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -326,11 +348,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map5"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -375,6 +393,12 @@
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map6"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -384,11 +408,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map6"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -429,6 +449,12 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map7"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -438,11 +464,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map7"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -487,6 +509,12 @@
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map8"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -496,11 +524,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map8"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -541,6 +565,12 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map9"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -550,11 +580,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map9"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -598,6 +624,11 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="50dp">
+                    <ImageView
+                        android:id="@+id/Map10"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -608,11 +639,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map10"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -653,6 +680,12 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="50dp">
 
+                    <ImageView
+                        android:id="@+id/Map11"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -662,11 +695,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map11"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -710,6 +739,11 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="50dp">
+                    <ImageView
+                        android:id="@+id/Map12"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -720,11 +754,7 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
-                    <ImageView
-                        android:id="@+id/Map12"
-                        android:layout_width="74dp"
-                        android:layout_height="74dp"
-                        android:src="@drawable/neverplay"></ImageView>
+
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -764,6 +794,11 @@
 
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="50dp">
+                    <ImageView
+                        android:id="@+id/Map13"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -774,13 +809,122 @@
                         android:textColor="@color/black"
                         android:textSize="50dp"></TextView>
 
+
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rev14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rev13">
+
+                <ImageView
+                    android:id="@+id/star14_1"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="110dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/star_map"></ImageView>
+
+                <ImageView
+                    android:id="@+id/star14_2"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/star_map"></ImageView>
+
+                <ImageView
+                    android:id="@+id/star14_3"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/star_map"></ImageView>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="50dp">
                     <ImageView
-                        android:id="@+id/Map13"
+                        android:id="@+id/Map14"
                         android:layout_width="74dp"
                         android:layout_height="74dp"
                         android:src="@drawable/neverplay"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="14"
+                        android:textColor="@color/black"
+                        android:textSize="50dp"></TextView>
+
+
                 </RelativeLayout>
             </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rev15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rev14">
+
+                <ImageView
+                    android:id="@+id/star15_1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/star_map"></ImageView>
+
+                <ImageView
+                    android:id="@+id/star15_2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/star_map"></ImageView>
+
+                <ImageView
+                    android:id="@+id/star15_3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="110dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/star_map"></ImageView>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="50dp">
+
+                    <ImageView
+                        android:id="@+id/Map15"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:src="@drawable/neverplay"></ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="15"
+                        android:textColor="@color/black"
+                        android:textSize="50dp"></TextView>
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+
         </RelativeLayout>
 
     </ScrollView>

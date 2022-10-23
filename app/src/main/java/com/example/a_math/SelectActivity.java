@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a_math.Options.SharePrefMap;
+import com.example.a_math.Options.SharePrefName;
 import com.example.a_math.Options.SharePrefStar;
 
 public class SelectActivity extends AppCompatActivity {
@@ -22,6 +23,11 @@ public class SelectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select);
         ImageView map1 = findViewById(R.id.Map1);
         TextView star_count = findViewById(R.id.star_count);
+
+        SharePrefName sharePrefName = new SharePrefName(SelectActivity.this);
+
+        TextView name = findViewById(R.id.name);
+        name.setText(sharePrefName.loadName());
 
         SharePrefMap sharePref = new SharePrefMap(SelectActivity.this);
         SharePrefStar sharePrefStar = new SharePrefStar(SelectActivity.this);
@@ -36,8 +42,11 @@ public class SelectActivity extends AppCompatActivity {
         String[] mapList = sharePref.loadMap().split(",");
         int map = 1;
         Resources res = getResources();
-        int resourceId = res.getIdentifier("star_mapcl", "drawable", getPackageName() );
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = res.getDrawable( resourceId );
+        int resourceStarId = res.getIdentifier("star_mapcl", "drawable", getPackageName() );
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawableStar = res.getDrawable(resourceStarId);
+
+        int resourceId = res.getIdentifier("everplay", "drawable", getPackageName() );
+        @SuppressLint("UseCompatLoadingForDrawables") Drawable drawable = res.getDrawable(resourceId);
 
         for (String score: mapList) {
             if (score.contains(":")) {
@@ -47,14 +56,17 @@ public class SelectActivity extends AppCompatActivity {
                 ImageView star2 = (ImageView)findViewById(getResources().getIdentifier("star"+map+"_2", "id", getPackageName()));
                 ImageView star3 = (ImageView)findViewById(getResources().getIdentifier("star"+map+"_3", "id", getPackageName()));
 
+                ImageView play = (ImageView)findViewById(getResources().getIdentifier("Map"+map, "id", getPackageName()));
+                play.setImageDrawable(drawable);
+
                 if (currentStar >= 1) {
-                    star1.setImageDrawable(drawable);
+                    star1.setImageDrawable(drawableStar);
                 }
                 if (currentStar >= 2) {
-                    star2.setImageDrawable(drawable);
+                    star2.setImageDrawable(drawableStar);
                 }
                 if (currentStar >= 3) {
-                    star3.setImageDrawable(drawable);
+                    star3.setImageDrawable(drawableStar);
                 }
 
                 map++;

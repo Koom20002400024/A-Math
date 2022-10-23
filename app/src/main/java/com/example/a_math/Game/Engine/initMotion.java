@@ -356,7 +356,7 @@ public class initMotion {
             if (newChip > 0 && !allStar.equals("")) {
                 int allSumStar = Integer.parseInt(allStar.split(":")[0]);
                 if (allSumStar > 0) {
-//                    sharePrefStar.setStar(allSumStar-1+":"+allStar.split(":")[1]);
+                    sharePrefStar.setStar(allSumStar-1+":"+allStar.split(":")[1]);
 
                     System.out.println(newChip);
                     HashMap<Integer, String> select_chip = new HashMap<>();

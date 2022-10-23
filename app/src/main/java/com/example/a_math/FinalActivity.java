@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a_math.Options.SharePrefMap;
+import com.example.a_math.Options.SharePrefName;
 import com.example.a_math.Options.SharePrefStar;
 
 public class FinalActivity extends AppCompatActivity {
@@ -20,6 +21,11 @@ public class FinalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
+
+        SharePrefName sharePrefName = new SharePrefName(FinalActivity.this);
+
+        TextView name = findViewById(R.id.name);
+        name.setText(sharePrefName.loadName());
 
         int map = getIntent().getIntExtra("map",1);
         int starNew = getIntent().getIntExtra("starNew",0);

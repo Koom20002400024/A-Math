@@ -37,7 +37,10 @@ public class Validate {
         List<Integer> y_list = (List<Integer>) dict.get("y");
         List<String> o = (List<String>) dict.get("operation");
         int count = (int) dict.get("count");
-
+        if (!x_list.contains(7) || !y_list.contains(7)){
+            System.out.println("Must Start *.");
+            return false;
+        }
         if (o.contains("=")){
             Integer t = travel(activity, idMap, x_list.get(0), y_list.get(0), new ArrayList<>());
             if (t == count){
@@ -85,6 +88,7 @@ public class Validate {
                     System.out.println("> NOT Pass.");
                     return false;
                 }
+
             } else {
                 System.out.println("> Error 2 .");
                 return false;
