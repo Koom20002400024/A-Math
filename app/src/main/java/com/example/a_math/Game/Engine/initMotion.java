@@ -28,6 +28,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -358,6 +359,12 @@ public class initMotion {
             SharePrefStar sharePrefStar = new SharePrefStar(activity);
 
             String allStar = sharePrefStar.loadStar(); // "" ,"5:2,3"
+            if (newChip == 0) {
+                Toast.makeText(activity, "New Chip only 4 Times", Toast.LENGTH_LONG).show();
+            }
+            if (allStar.equals("")) {
+                Toast.makeText(activity, "No Star", Toast.LENGTH_LONG).show();
+            }
             if (newChip > 0 && !allStar.equals("")) {
                 int allSumStar = Integer.parseInt(allStar.split(":")[0]);
                 if (allSumStar > 0) {
@@ -432,6 +439,8 @@ public class initMotion {
                     save_select = -1;
 
                     newChip--;
+                } else {
+                    Toast.makeText(activity, "No Star", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a_math.Options.SharePrefMap;
 import com.example.a_math.Options.SharePrefName;
@@ -92,6 +93,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map" , 2);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -103,6 +106,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 3);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -114,6 +119,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 4);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -125,6 +132,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 5);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -136,6 +145,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 6);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -147,6 +158,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 7);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -158,6 +171,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 8);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -169,6 +184,8 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 9);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -180,8 +197,76 @@ public class SelectActivity extends AppCompatActivity {
                     Intent i = new Intent(SelectActivity.this, GameActivity.class);
                     i.putExtra("map", 10);
                     startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
                 }
             }
         });
+        ImageView map11 = findViewById(R.id.Map11);
+        map11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!sharePref.loadMap().equals("") && mapPlay+1 >= 11) {
+                    Intent i = new Intent(SelectActivity.this, GameActivity.class);
+                    i.putExtra("map", 11);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ImageView map12 = findViewById(R.id.Map12);
+        map12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!sharePref.loadMap().equals("") && mapPlay+1 >= 12) {
+                    Intent i = new Intent(SelectActivity.this, GameActivity.class);
+                    i.putExtra("map", 12);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ImageView map13 = findViewById(R.id.Map13);
+        map13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!sharePref.loadMap().equals("") && mapPlay+1 >= 13) {
+                    Intent i = new Intent(SelectActivity.this, GameActivity.class);
+                    i.putExtra("map", 13);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ImageView map14 = findViewById(R.id.Map14);
+        map14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!sharePref.loadMap().equals("") && mapPlay+1 >= 14) {
+                    Intent i = new Intent(SelectActivity.this, GameActivity.class);
+                    i.putExtra("map", 14);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        ImageView map15 = findViewById(R.id.Map15);
+        map15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!sharePref.loadMap().equals("") && mapPlay+1 >= 15) {
+                    Intent i = new Intent(SelectActivity.this, GameActivity.class);
+                    i.putExtra("map", 15);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(SelectActivity.this, "Must pass the previous Map", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
     }
 }

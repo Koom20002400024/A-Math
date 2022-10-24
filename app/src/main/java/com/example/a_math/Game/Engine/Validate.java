@@ -10,6 +10,7 @@ import android.os.IInterface;
 import android.text.TextUtils;
 import android.text.style.TtsSpan;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -86,15 +87,18 @@ public class Validate {
                 }
                 else {
                     System.out.println("> NOT Pass.");
+                    Toast.makeText(activity, "Not Pass", Toast.LENGTH_LONG).show();
                     return false;
                 }
 
             } else {
                 System.out.println("> Error 2 .");
+                Toast.makeText(activity, "Not Pass", Toast.LENGTH_LONG).show();
                 return false;
             }
         } else {
             System.out.println("> Error 3.");
+            Toast.makeText(activity, "Not Pass", Toast.LENGTH_LONG).show();
             return false;
         }
     }
