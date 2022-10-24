@@ -29,6 +29,7 @@ public class HomeActivity extends AppCompatActivity {
         SharePrefMap sharePref = new SharePrefMap(HomeActivity.this);
         SharePrefName sharePrefName = new SharePrefName(HomeActivity.this);
 
+//        sharePrefName.setName("");
         if (sharePrefName.loadName().equals("")) {
             showDialogName(sharePrefName);
         } else {

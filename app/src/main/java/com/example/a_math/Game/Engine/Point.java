@@ -1,9 +1,11 @@
 package com.example.a_math.Game.Engine;
 
 import static com.example.a_math.Game.Engine.Validate.find_and_count;
+import static com.example.a_math.Game.UI.Chip.getIVTag;
 import static com.example.a_math.Game.UI.Chip.getValueIV;
 
 import android.app.Activity;
+import android.widget.ImageView;
 
 import com.example.a_math.Game.Map.TablePoint;
 import com.example.a_math.Models.PointGame;
@@ -202,22 +204,24 @@ public class Point {
                 around = around_coordinate(activity, idMap, con, start);
                 value = getValueIV(activity, idMap, con, start);
                 cur_index = con+"_"+start;
+                ImageView iv = activity.findViewById(idMap.get("x" + con + "y" + start));
                 result = new PointGame(
                         value,
                         getPointGame(value),
                         "x"+con+"y"+start,
-                        TablePoint.TablePoint(con, start)
+                        (Boolean) getIVTag(iv, "locked") ? null : TablePoint.TablePoint(con, start)
                 );
             }
             else if (direct.equals("left") || direct.equals("right")) {
                 around = around_coordinate(activity, idMap, start, con);
                 value = getValueIV(activity, idMap, start, con);
                 cur_index = start+"_"+con;
+                ImageView iv = activity.findViewById(idMap.get("x" + start + "y" + con));
                 result = new PointGame(
                         value,
                         getPointGame(value),
                         "x"+start+"y"+con,
-                        TablePoint.TablePoint(start, con)
+                        (Boolean) getIVTag(iv, "locked") ? null : TablePoint.TablePoint(start, con)
                 );
             }
 

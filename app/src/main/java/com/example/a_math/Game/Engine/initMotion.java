@@ -184,6 +184,10 @@ public class initMotion {
             String allStar = sharePrefStar.loadStar();
 
             if (passed) {
+                // 1. พื้นปกติ คะแนนปกติ
+                // 2. 1. + คะแนน0 + พื้น null + เพิ่มไม่มีพื้นเฉพาะตีวที่ลง - ข้อ 1.
+                System.out.println("Game Old Point Final: "+startPoint(activity, idMap, dictOld));
+
                 HashMap<String, Object> dictNew = (HashMap<String, Object>) find_and_count(activity, idMap);
                 System.out.println("New: " + dictNew);
                 if (true) {
@@ -236,6 +240,7 @@ public class initMotion {
                     System.out.println("Edit: " + dictOld);
                 }
 
+                System.out.println("Game Point Final: "+startPoint(activity, idMap, dictNew));
                 int currentPoint = startPoint(activity, idMap, dictOld);
                 int pointGame = Math.abs(currentPoint - pointOrigin);
 
@@ -286,7 +291,7 @@ public class initMotion {
                 if (countSelect == 8) {
                     pointGame += 40;
                 }
-                System.out.println("Origin Point "+pointOrigin+", Game Point "+currentPoint+", Final Point:"+pointGame);
+//                System.out.println("Origin Point "+pointOrigin+", Game Point "+currentPoint+", Final Point:"+pointGame);
 
                 if (pointGame < star1) {
                     starNew = 0;
