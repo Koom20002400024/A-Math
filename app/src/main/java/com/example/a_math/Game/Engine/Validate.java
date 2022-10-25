@@ -208,13 +208,16 @@ public class Validate {
 
     static Double calculate(String eq_text){
         StringBuilder text = new StringBuilder(eq_text);
+
         try {
-            if (
-                    (eq_text.equals("") ||
-                            !isNumeric(String.valueOf(text.charAt(0))) && !String.valueOf(text.charAt(0)).equals("-")) ||
-                            (String.valueOf(text.charAt(0)).equals("-") && String.valueOf(text.charAt(1)).equals("0")) ||
-                            (String.valueOf(text.charAt(0)).equals("0") && isNumeric(String.valueOf(text.charAt(1))))) {
-                return null;
+            if(!eq_text.equals("0")) {
+                if (
+                        (eq_text.equals("") ||
+                                !isNumeric(String.valueOf(text.charAt(0))) && !String.valueOf(text.charAt(0)).equals("-")) ||
+                                (String.valueOf(text.charAt(0)).equals("-") && String.valueOf(text.charAt(1)).equals("0")) ||
+                                (String.valueOf(text.charAt(0)).equals("0") && isNumeric(String.valueOf(text.charAt(1))))) {
+                    return null;
+                }
             }
         } catch (Exception ex) {
             return null;

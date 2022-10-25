@@ -34,8 +34,8 @@ public class Object {
         obj.addView(iv);
     }
 
-    public static void createBtn(Activity activity, HashMap<String, Integer> idMap, String name, Button btn, int width, int height, String text, float x, float y) {
-        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams(width, height);
+    public static void createBtn(Activity activity, HashMap<String, Integer> idMap, String name, Button btn, int width, int height, String text, float x, float y,boolean fix) {
+        ConstraintLayout.LayoutParams layoutParams = new ConstraintLayout.LayoutParams( fix?width:LinearLayout.LayoutParams.WRAP_CONTENT, height);
 
         int generated_R_id = getRandomId(activity, idMap, name);
         idMap.put(name, generated_R_id);
