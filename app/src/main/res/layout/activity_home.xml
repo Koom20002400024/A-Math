@@ -7,6 +7,31 @@
     tools:context=".HomeActivity">
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="197dp"
+            android:layout_height="200dp"
+            android:background="@drawable/logo"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"/>
+
+        <Button
+            android:layout_below="@id/imageView4"
+            android:id="@+id/startbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="START"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -70,29 +95,5 @@
 
     </RelativeLayout>
 
-    <ImageView
-        android:layout_below="@id/head"
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/bg" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="197dp"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/logo"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"/>
-
-    <Button
-        android:layout_below="@id/imageView4"
-        android:id="@+id/startbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="START"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
 
 </RelativeLayout>
