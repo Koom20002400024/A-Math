@@ -33,7 +33,7 @@ public class Map9 {
 
         point.put(1, 15);
         point.put(2, 30);
-        point.put(3, 60);
+        point.put(3, 90);
     }
     public static void getChip1(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "12");
@@ -41,15 +41,15 @@ public class Map9 {
         select_chip.put(2, "=");
         select_chip.put(3, "-");
         select_chip.put(4, "1");
-        select_chip.put(5, "4");
+        select_chip.put(5, "blank");
         select_chip.put(6, "/");
-        select_chip.put(7, "7");
+        select_chip.put(7, "blank");
     }
 
     public static void getChip2(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "+");
         select_chip.put(1, "=");
-        select_chip.put(2, "12");
+        select_chip.put(2, "blank");
         select_chip.put(3, "10");
         select_chip.put(4, "1");
         select_chip.put(5, "-");
@@ -58,24 +58,24 @@ public class Map9 {
     }
 
     public static void getChip3(HashMap<Integer, String> select_chip) {
-        select_chip.put(0, "20");
+        select_chip.put(0, "blank");
         select_chip.put(1, "=");
         select_chip.put(2, "13");
         select_chip.put(3, "0");
-        select_chip.put(4, "*");
+        select_chip.put(4, "*//");
         select_chip.put(5, "8");
-        select_chip.put(6, "+");
+        select_chip.put(6, "+/-");
         select_chip.put(7, "8");
     }
 
     public static void getChip4(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "0");
         select_chip.put(1, "=");
-        select_chip.put(2, "11");
+        select_chip.put(2, "blank");
         select_chip.put(3, "1");
-        select_chip.put(4, "*");
+        select_chip.put(4, "*//");
         select_chip.put(5, "-");
-        select_chip.put(6, "+");
+        select_chip.put(6, "+/-");
         select_chip.put(7, "10");
     }
 

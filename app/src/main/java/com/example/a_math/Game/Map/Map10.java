@@ -22,38 +22,38 @@ public class Map10 {
         table_map.put(13, Arrays.asList(null, null, null, null, null, null, null, "/", null, null, null, null, null, null, null));
         table_map.put(14, Arrays.asList(null, null, null, null, null, null, null, "5", null, null, null, null, null, null, null));
 
-        select_chip.put(0, "/");
+        select_chip.put(0, "*//");
         select_chip.put(1, "=");
         select_chip.put(2, "1");
         select_chip.put(3, "3");
         select_chip.put(4, "2");
         select_chip.put(5, "0");
-        select_chip.put(6, "-");
+        select_chip.put(6, "+/-");
         select_chip.put(7, "15");
 
         point.put(1, 15);
         point.put(2, 30);
-        point.put(3, 60);
+        point.put(3, 90);
     }
     public static void getChip1(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "13");
-        select_chip.put(1, "6");
+        select_chip.put(1, "blank");
         select_chip.put(2, "=");
-        select_chip.put(3, "9");
-        select_chip.put(4, "-");
+        select_chip.put(3, "blank");
+        select_chip.put(4, "+/-");
         select_chip.put(5, "4");
-        select_chip.put(6, "+");
+        select_chip.put(6, "+/-");
         select_chip.put(7, "3");
     }
 
     public static void getChip2(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "4");
         select_chip.put(1, "=");
-        select_chip.put(2, "12");
+        select_chip.put(2, "blank");
         select_chip.put(3, "16");
         select_chip.put(4, "9");
-        select_chip.put(5, "-");
-        select_chip.put(6, "/");
+        select_chip.put(5, "+/-");
+        select_chip.put(6, "*//");
         select_chip.put(7, "9");
     }
 
@@ -61,10 +61,10 @@ public class Map10 {
         select_chip.put(0, "-");
         select_chip.put(1, "=");
         select_chip.put(2, "*");
-        select_chip.put(3, "0");
+        select_chip.put(3, "blank");
         select_chip.put(4, "1");
         select_chip.put(5, "1");
-        select_chip.put(6, "-");
+        select_chip.put(6, "+/-");
         select_chip.put(7, "11");
     }
 
@@ -75,7 +75,7 @@ public class Map10 {
         select_chip.put(3, "3");
         select_chip.put(4, "1");
         select_chip.put(5, "-");
-        select_chip.put(6, "+");
-        select_chip.put(7, "10");
+        select_chip.put(6, "+/-");
+        select_chip.put(7, "blank");
     }
 }

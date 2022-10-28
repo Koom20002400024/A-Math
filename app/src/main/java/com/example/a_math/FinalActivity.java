@@ -31,6 +31,7 @@ public class FinalActivity extends AppCompatActivity {
         int starNew = getIntent().getIntExtra("starNew",0);
 
         ImageView next = findViewById(R.id.next);
+        ImageView refresh = findViewById(R.id.refresh);
         ImageView home = findViewById(R.id.home);
 
         ImageView star_final_1 = findViewById(R.id.star_final1);
@@ -60,6 +61,16 @@ public class FinalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(FinalActivity.this, GameActivity.class);
                 i.putExtra("map" , map);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(FinalActivity.this, GameActivity.class);
+                i.putExtra("map" , map == 1 ? map : map-1);
                 startActivity(i);
                 finish();
             }

@@ -3,13 +3,15 @@ package com.example.a_math.Game.Engine;
 import static com.example.a_math.Game.Engine.Point.startPoint;
 import static com.example.a_math.Game.Engine.Validate.find_and_count;
 import static com.example.a_math.Game.Engine.Validate.start;
-import static com.example.a_math.Game.Engine.initObj.createSelect;
 import static com.example.a_math.Game.Engine.initObj.paddingPiecePx;
 import static com.example.a_math.Game.Engine.initObj.paddingSelectPiecePx;
 import static com.example.a_math.Game.Engine.initObj.paddingSelectPx;
 import static com.example.a_math.Game.Engine.initObj.paddingStrokePx;
 import static com.example.a_math.Game.Engine.initObj.piece;
 import static com.example.a_math.Game.Engine.initObj.piece_select;
+import static com.example.a_math.Game.Popup.PopupBlank.onButtonShowPopupBlankClick;
+import static com.example.a_math.Game.Popup.PopupMultiDivide.onButtonShowPopupMultiDivideClick;
+import static com.example.a_math.Game.Popup.PopupPlusMinus.onButtonShowPopupPlusMinusClick;
 import static com.example.a_math.Game.Setting.getNum;
 import static com.example.a_math.Game.Setting.getSelectNum;
 import static com.example.a_math.Game.UI.Chip.getIVTag;
@@ -33,19 +35,16 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 
 import com.example.a_math.FinalActivity;
-import com.example.a_math.GameActivity;
 import com.example.a_math.Options.SharePrefMap;
 import com.example.a_math.Options.SharePrefStar;
 import com.example.a_math.R;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class initMotion {
 
@@ -148,13 +147,39 @@ public class initMotion {
                 }
                 if (selected && !save_state.equals("")) {
                     ImageView old_iv = activity.findViewById(idMap.get("x" + save_state.split("_")[0] + "y" + save_state.split("_")[1]));
-                    setChip(activity, old_iv, (String) getIVTag(iv, "value"));
-                    saveIVTag(iv, "used", true);
-                    saveIVTag(old_iv, "index", save_select);
-                    save_state = "";
-                    iv.setAlpha(0.5F);
-                    selected = false;
-                    save_select = -1;
+                    if (getIVTag(iv, "value").equals("blank")) {
+                        onButtonShowPopupBlankClick(activity, obj, old_iv);
+                        saveIVTag(iv, "used", true);
+                        saveIVTag(old_iv, "index", save_select);
+                        save_state = "";
+                        iv.setAlpha(0.5F);
+                        selected = false;
+                        save_select = -1;
+                    } else if (getIVTag(iv, "value").equals("+/-")) {
+                        onButtonShowPopupPlusMinusClick(activity, obj, old_iv);
+                        saveIVTag(iv, "used", true);
+                        saveIVTag(old_iv, "index", save_select);
+                        save_state = "";
+                        iv.setAlpha(0.5F);
+                        selected = false;
+                        save_select = -1;
+                    } else if (getIVTag(iv, "value").equals("*//")) {
+                        onButtonShowPopupMultiDivideClick(activity, obj, old_iv);
+                        saveIVTag(iv, "used", true);
+                        saveIVTag(old_iv, "index", save_select);
+                        save_state = "";
+                        iv.setAlpha(0.5F);
+                        selected = false;
+                        save_select = -1;
+                    } else {
+                        setChip(activity, old_iv, (String) getIVTag(iv, "value"));
+                        saveIVTag(iv, "used", true);
+                        saveIVTag(old_iv, "index", save_select);
+                        save_state = "";
+                        iv.setAlpha(0.5F);
+                        selected = false;
+                        save_select = -1;
+                    }
                 }
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 view.performClick();
@@ -241,7 +266,7 @@ public class initMotion {
                     System.out.println("Edit: " + dictOld);
                 }
 
-                System.out.println("Game Point Final: "+startPoint(activity, idMap, dictNew));
+                System.out.println("Game Point Final: "+startPoint(activity, idMap, dictOld));
                 int currentPoint = startPoint(activity, idMap, dictOld);
                 int pointGame = Math.abs(currentPoint - pointOrigin);
 
@@ -289,8 +314,9 @@ public class initMotion {
                     countSelect++;
                 }
 
+                System.out.println("เลือก "+countSelect);
                 if (countSelect == 8) {
-                    pointGame += 40;
+                    pointGame += 90;
                 }
 //                System.out.println("Origin Point "+pointOrigin+", Game Point "+currentPoint+", Final Point:"+pointGame);
 

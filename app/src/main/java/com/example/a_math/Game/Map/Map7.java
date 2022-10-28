@@ -26,10 +26,10 @@ public class Map7 {
         select_chip.put(1, "=");
         select_chip.put(2, "1");
         select_chip.put(3, "9");
-        select_chip.put(4, "+");
+        select_chip.put(4, "+/-");
         select_chip.put(5, "9");
         select_chip.put(6, "0");
-        select_chip.put(7, "-");
+        select_chip.put(7, "+/-");
 
         point.put(1, 15);
         point.put(2, 30);
@@ -39,43 +39,43 @@ public class Map7 {
         select_chip.put(0, "12");
         select_chip.put(1, "1");
         select_chip.put(2, "=");
-        select_chip.put(3, "+");
+        select_chip.put(3, "+/-");
         select_chip.put(4, "1");
         select_chip.put(5, "4");
-        select_chip.put(6, "-");
+        select_chip.put(6, "+/-");
         select_chip.put(7, "9");
     }
 
     public static void getChip2(HashMap<Integer, String> select_chip) {
-        select_chip.put(0, "-");
+        select_chip.put(0, "+/-");
         select_chip.put(1, "=");
-        select_chip.put(2, "+");
-        select_chip.put(3, "16");
+        select_chip.put(2, "+/-");
+        select_chip.put(3, "blank");
         select_chip.put(4, "18");
-        select_chip.put(5, "-");
+        select_chip.put(5, "blank");
         select_chip.put(6, "+");
         select_chip.put(7, "14");
     }
 
     public static void getChip3(HashMap<Integer, String> select_chip) {
-        select_chip.put(0, "20");
+        select_chip.put(0, "blank");
         select_chip.put(1, "=");
         select_chip.put(2, "13");
-        select_chip.put(3, "-");
+        select_chip.put(3, "+/-");
         select_chip.put(4, "1");
         select_chip.put(5, "2");
-        select_chip.put(6, "+");
+        select_chip.put(6, "+/-");
         select_chip.put(7, "9");
     }
 
     public static void getChip4(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "2");
         select_chip.put(1, "=");
-        select_chip.put(2, "-");
+        select_chip.put(2, "*//");
         select_chip.put(3, "1");
         select_chip.put(4, "1");
-        select_chip.put(5, "-");
-        select_chip.put(6, "+");
-        select_chip.put(7, "10");
+        select_chip.put(5, "+/-");
+        select_chip.put(6, "+/-");
+        select_chip.put(7, "blank");
     }
 }

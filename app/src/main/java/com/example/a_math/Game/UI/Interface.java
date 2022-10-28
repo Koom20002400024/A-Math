@@ -53,6 +53,21 @@ public class Interface {
         if (isNumeric(value)) {
             int id = activity.getResources().getIdentifier("a" + value, "drawable", activity.getPackageName());
             iv.setImageResource(id);
+        } else if (value.contains("c")) {
+            if (value.equals("+c")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.plusbl));
+            } else if (value.equals("-c")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.deletebl));
+            }else if (value.equals("*c")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.multiplybl));
+            }else if (value.equals("/c")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.dividebl));
+            }else if (value.equals("=c")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.equalbl));
+            } else {
+                int id = activity.getResources().getIdentifier("a" + value.replace("c", "") + "bl", "drawable", activity.getPackageName());
+                iv.setImageResource(id);
+            }
         } else {
             if (value.equals("+")) {
                 iv.setImageDrawable(activity.getDrawable(R.drawable.plus));
@@ -68,9 +83,17 @@ public class Interface {
                 iv.setImageDrawable(activity.getDrawable(R.drawable.plus_delete));
             } else if (value.equals("*//")) {
                 iv.setImageDrawable(activity.getDrawable(R.drawable.multiply_divide));
-            } else if (value.equals("blank")) {
+            } else if (value.equals("+kl")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.plus_delete_cldel));
+            }else if (value.equals("-kl")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.plus_delete_clpl));
+            }else if (value.equals("*kl")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.multiply_divide_cldivide));
+            }else if (value.equals("/kl")) {
+                iv.setImageDrawable(activity.getDrawable(R.drawable.multiply_divide_clmul));
+            }else if (value.equals("blank")) {
                 iv.setImageDrawable(activity.getDrawable(R.drawable.blank));
-            } else {
+            }else {
                 iv.setImageDrawable(activity.getDrawable(R.drawable.board));
             }
         }

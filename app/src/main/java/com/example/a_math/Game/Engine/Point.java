@@ -82,6 +82,8 @@ public class Point {
         return 2;
         } else if (value.equals("blank")) {
         return 0;
+        }else if (value.contains("kl")) {
+        return 1;
         } else if (value.equals("y") || value.equals("o")) {
         return 2;
         } else if (value.equals("r") || value.equals("b") || value.equals("s")) {

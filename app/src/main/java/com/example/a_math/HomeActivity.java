@@ -10,6 +10,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a_math.Options.SharePrefMap;
@@ -22,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Button start = findViewById(R.id.startbtn);
+        ImageView start = findViewById(R.id.startbtn);
         TextView star_count = findViewById(R.id.star_count_home);
 
         SharePrefStar sharePrefStar = new SharePrefStar(HomeActivity.this);

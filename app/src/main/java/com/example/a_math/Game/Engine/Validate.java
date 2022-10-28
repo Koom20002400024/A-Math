@@ -79,6 +79,7 @@ public class Validate {
                 }
                 if (list_eq.contains(null) || list_op.size() != t){
                     System.out.println("> Error 1.");
+                    Toast.makeText(activity, "Not Pass", Toast.LENGTH_LONG).show();
                     return false;
                 }
                 else if (!list_eq.contains(false)) {
@@ -114,10 +115,10 @@ public class Validate {
                 String value = getValueIV(activity, idMap, j, i);
                 if (value != null){
                     dict.put("count", (Integer) dict.get("count")+1);
-                    if (value.equals("=")){
+                    if (value.equals("=") || value.equals("=c")){
                         x.add(0, j);
                         y.add(0, i);
-                        o.add(0, value);
+                        o.add(0, value.replace("c", ""));
                     }else{
                         x.add(j);
                         y.add(i);
@@ -185,6 +186,16 @@ public class Validate {
             if (result == null) {
                 break;
             }
+
+            System.out.println("ค่าเก่า "+result);
+
+            if (result.contains("kl")) {
+                result = result.replace("kl", "");
+            } else if (result.contains("c")) {
+                result = result.replace("c", "");
+            }
+
+            System.out.println("ค่าใหม่ "+result);
 
             if (check_operation.equals("=")){
                 if ((direct.equals("up") || direct.equals("down")) && around_coordinate (activity, idMap, con, start) && !list_op_state.contains(cur_index)){

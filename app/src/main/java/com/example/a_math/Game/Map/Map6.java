@@ -37,13 +37,13 @@ public class Map6 {
     }
     public static void getChip1(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "-");
-        select_chip.put(1, "5");
+        select_chip.put(1, "13");
         select_chip.put(2, "=");
-        select_chip.put(3, "2");
+        select_chip.put(3, "blank");
         select_chip.put(4, "+");
         select_chip.put(5, "2");
         select_chip.put(6, "*");
-        select_chip.put(7, "3");
+        select_chip.put(7, "blank");
     }
 
     public static void getChip2(HashMap<Integer, String> select_chip) {
@@ -52,13 +52,13 @@ public class Map6 {
         select_chip.put(2, "+");
         select_chip.put(3, "8");
         select_chip.put(4, "18");
-        select_chip.put(5, "-");
+        select_chip.put(5, "blank");
         select_chip.put(6, "/");
         select_chip.put(7, "8");
     }
 
     public static void getChip3(HashMap<Integer, String> select_chip) {
-        select_chip.put(0, "20");
+        select_chip.put(0, "blank");
         select_chip.put(1, "=");
         select_chip.put(2, "2");
         select_chip.put(3, "-");
@@ -71,7 +71,7 @@ public class Map6 {
     public static void getChip4(HashMap<Integer, String> select_chip) {
         select_chip.put(0, "2");
         select_chip.put(1, "=");
-        select_chip.put(2, "11");
+        select_chip.put(2, "blank");
         select_chip.put(3, "1");
         select_chip.put(4, "9");
         select_chip.put(5, "-");

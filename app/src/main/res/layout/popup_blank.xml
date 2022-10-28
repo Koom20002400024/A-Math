@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:weightSum="2"
+            android:id="@+id/toolbar_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_500">
+
+            <TextView
+                android:layout_weight="1"
+                android:textColor="@color/white"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="20sp"
+                android:text="Select"
+                android:layout_marginStart="20dp" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_below="@id/toolbar_popup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/popup_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/row1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="5">
+
+                    <ImageView
+                        android:id="@+id/select_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a0"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a1"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a2"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a3"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a4"></ImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/row2"
+                    android:layout_below="@+id/row1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="5">
+
+                    <ImageView
+                        android:id="@+id/select_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a5"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a6"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a7"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a8"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a9"></ImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/row3"
+                    android:layout_below="@+id/row2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="5">
+
+                    <ImageView
+                        android:id="@+id/select_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a10"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a11"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a12"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a13"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a14"></ImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/row4"
+                    android:layout_below="@+id/row3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="5">
+
+                    <ImageView
+                        android:id="@+id/select_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a15"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a16"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a17"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a18"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_19"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a19"></ImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/row5"
+                    android:layout_below="@+id/row4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="5">
+
+                    <ImageView
+                        android:id="@+id/select_20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/a20"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_plus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/plus"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_minus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/delete"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_multi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/multiply"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/select_divide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/divide"></ImageView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/row6"
+                    android:layout_below="@+id/row5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="5">
+
+                    <ImageView
+                        android:id="@+id/select_equal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/equal"></ImageView>
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/wite"></ImageView>
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/wite"></ImageView>
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/wite"></ImageView>
+
+                    <ImageView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/wite"></ImageView>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

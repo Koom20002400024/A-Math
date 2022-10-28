@@ -29,7 +29,7 @@ public class Map4 {
         select_chip.put(3, "0");
         select_chip.put(4, "5");
         select_chip.put(5, "1");
-        select_chip.put(6, "/");
+        select_chip.put(6, "*//");
         select_chip.put(7, "1");
 
         point.put(1, 15);
@@ -62,10 +62,10 @@ public class Map4 {
         select_chip.put(0, "2");
         select_chip.put(1, "=");
         select_chip.put(2, "3");
-        select_chip.put(3, "0");
+        select_chip.put(3, "blank");
         select_chip.put(4, "1");
         select_chip.put(5, "4");
-        select_chip.put(6, "*");
+        select_chip.put(6, "*//");
         select_chip.put(7, "0");
 
     }
@@ -77,7 +77,7 @@ public class Map4 {
         select_chip.put(3, "-");
         select_chip.put(4, "1");
         select_chip.put(5, "-");
-        select_chip.put(6, "+");
-        select_chip.put(7, "10");
+        select_chip.put(6, "+/-");
+        select_chip.put(7, "blank");
     }
 }
