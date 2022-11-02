@@ -40,6 +40,7 @@ public class Validate {
         int count = (int) dict.get("count");
         if (!x_list.contains(7) || !y_list.contains(7)){
             System.out.println("Must Start *.");
+            Toast.makeText(activity, "Must Start Star (*)", Toast.LENGTH_LONG).show();
             return false;
         }
         if (o.contains("=")){
